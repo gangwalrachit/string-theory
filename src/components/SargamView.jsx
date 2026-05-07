@@ -31,9 +31,11 @@ export default function SargamView({ items, currentNoteIndex }) {
                   const isGroupActive = token.tokens.some(t => t.noteIndex === currentNoteIndex);
                   return (
                     <span key={j} className={`sargam-group${isGroupActive ? " active" : ""}`}>
-                      {token.tokens.map((t, k) => (
-                        <SargamToken key={k} token={t} currentNoteIndex={currentNoteIndex} />
-                      ))}
+                      <span className="sargam-group-notes">
+                        {token.tokens.map((t, k) => (
+                          <SargamToken key={k} token={t} currentNoteIndex={currentNoteIndex} />
+                        ))}
+                      </span>
                       <svg className="sargam-slur" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden="true">
                         <path d="M 2 2 Q 50 8 98 2" fill="none" stroke="currentColor" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
                       </svg>

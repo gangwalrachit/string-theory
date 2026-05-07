@@ -962,7 +962,7 @@ body {
 .sargam-row {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   padding: 4px 0;
   margin-bottom: 6px;
 }
@@ -998,20 +998,20 @@ body {
 
 .sargam-group {
   display: inline-flex;
-  align-items: center;
-  position: relative;
-  padding-bottom: 10px;
+  flex-direction: column;
+}
+
+.sargam-group-notes {
+  display: inline-flex;
 }
 
 .sargam-slur {
-  position: absolute;
-  bottom: 2px;
-  left: 8px;
-  right: 8px;
+  display: block;
+  width: calc(100% - 16px);
   height: 8px;
+  margin: 1px 8px 2px;
   color: var(--text-muted);
   pointer-events: none;
-  overflow: visible;
 }
 
 .sargam-group.active .sargam-slur {
