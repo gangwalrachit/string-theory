@@ -12,19 +12,13 @@ function splitIntoMeasures(tokens) {
   return measures;
 }
 
-function SargamToken({ token, currentNoteIndex }) {
-  const isActive = token.noteIndex === currentNoteIndex;
-  const octaveClass = token.octave === 1 ? " upper" : token.octave === -1 ? " lower" : "";
-  const restClass = token.type === "rest" ? " sargam-rest" : "";
-  const activeClass = isActive ? " active" : "";
-
-  return (
-    <span className="sargam-slot" style={{ flex: token.duration ?? 1 }}>
-      <span className={`sargam-token${octaveClass}${restClass}${activeClass}`}>
-        {token.type === "rest" ? "—" : token.label}
-      </span>
-    </span>
-  );
+function noteClass(note, currentNoteIndex) {
+  return [
+    'sargam-token',
+    note.octave === 1 ? 'upper' : note.octave === -1 ? 'lower' : '',
+    note.type === 'rest' ? 'sargam-rest' : '',
+    note.noteIndex === currentNoteIndex ? 'active' : '',
+  ].filter(Boolean).join(' ');
 }
 
 export default function SargamView({ items, currentNoteIndex }) {
@@ -36,25 +30,33 @@ export default function SargamView({ items, currentNoteIndex }) {
             return <div key={i} className="sargam-section-break" />;
           }
 
-          return splitIntoMeasures(item.tokens).map((measure, mi) => {
-            const gFlex = (t) => t.tokens.reduce((s, n) => s + (n.duration ?? 1), 0);
-            return (
-              <div key={`${i}-${mi}`} className="sargam-measure">
-                {measure.map((token, j) => {
-                  if (token.type === "group") {
-                    return (
-                      <span key={j} className="sargam-group" style={{ flex: gFlex(token) }}>
+          return splitIntoMeasures(item.tokens).map((measure, mi) => (
+            <div key={`${i}-${mi}`} className="sargam-measure">
+              {measure.map((token, j) => {
+                if (token.type === "group") {
+                  const gDur = token.tokens.reduce((s, t) => s + (t.duration ?? 1), 0);
+                  return (
+                    <span key={j} className="sargam-slot" style={{ flex: gDur }}>
+                      <span className="sargam-group">
                         {token.tokens.map((t, k) => (
-                          <SargamToken key={k} token={t} currentNoteIndex={currentNoteIndex} />
+                          <span key={k} className={noteClass(t, currentNoteIndex)}>
+                            {t.type === "rest" ? "—" : t.label}
+                          </span>
                         ))}
                       </span>
-                    );
-                  }
-                  return <SargamToken key={j} token={token} currentNoteIndex={currentNoteIndex} />;
-                })}
-              </div>
-            );
-          });
+                    </span>
+                  );
+                }
+                return (
+                  <span key={j} className="sargam-slot" style={{ flex: token.duration ?? 1 }}>
+                    <span className={noteClass(token, currentNoteIndex)}>
+                      {token.type === "rest" ? "—" : token.label}
+                    </span>
+                  </span>
+                );
+              })}
+            </div>
+          ));
         })}
       </div>
     </div>

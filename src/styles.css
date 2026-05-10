@@ -1008,7 +1008,7 @@ body {
 }
 
 .sargam-group {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   border-bottom: 1.5px solid var(--text-muted);
   padding-bottom: 3px;
