@@ -6,5 +6,5 @@ Q: 1/4=80
 K: D
 %%MIDI program 40
 $
-DEFG EFGA FGAB GABc ABcd |
-dcBA cBAG BAGF AGFE GFED |
+DEFG EFGA | FGAB GABc | ABcd |
+dcBA cBAG | BAGF AGFE | GFED |

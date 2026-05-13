@@ -6,6 +6,6 @@ Q: 1/4=80
 K: D
 %%MIDI program 40
 $
-D E F | d c B | E F G | c B A |
-F G A | B A G | G A B | A G F |
-A B c | G F E | B c d | F E D |
+D E F d c B | E F G c B A |
+F G A B A G | G A B A G F |
+A B c G F E | B c d F E D |

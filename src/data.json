@@ -16,7 +16,7 @@
       "id": "exercise-3",
       "title": "Exercise 3",
       "category": "exercises",
-      "abc": "X: 1\nT: Exercise 3\nM: 4/4\nL: 1/8\nQ: 1/4=80\nK: D\n%%MIDI program 40\n$\nDDDD EEEE | FFFF GGGG | AAAA BBBB | cccc dddd |\ndddd cccc | BBBB AAAA | GGGG FFFF | EEEE DDDD |"
+      "abc": "X: 1\nT: Exercise 3\nM: 4/4\nL: 1/8\nQ: 1/4=80\nK: D\n%%MIDI program 40\n$\nDDDD EEEE | FFFF GGGG |\nAAAA BBBB | cccc dddd |\ndddd cccc | BBBB AAAA |\nGGGG FFFF | EEEE DDDD |"
     },
     {
       "id": "exercise-4",
